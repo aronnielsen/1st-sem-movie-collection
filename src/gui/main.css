@@ -1,0 +1,53 @@
+.background {
+    -fx-background-color: #222222;
+}
+
+.category {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.checkbox {
+    -fx-text-fill: #dadada;
+}
+
+.poster {
+    -fx-background-color: #555555;
+    -fx-animated: true;
+}
+
+.controls-container {
+    -fx-background-color: #333333;
+}
+
+.play-button, .return-button {
+    -fx-background-color: #666666;
+    -fx-text-fill: #dadada;
+}
+
+.progress-bar .track {
+    -fx-background-color: #666666;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+.progress-bar .bar {
+    -fx-accent: orange;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+.video-time {
+    -fx-text-fill: #dadada;
+}
+
+.background.fullscreen {
+    -fx-background-color: #000000;
+}
+
+.selected {
+    -fx-background-color: rgba(255, 163, 0, 0.5);
+}
+

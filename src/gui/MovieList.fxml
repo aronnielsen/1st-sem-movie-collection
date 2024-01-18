@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MovieListController">
+   <children>
+      <BorderPane fx:id="borderPane" prefHeight="200.0" prefWidth="200.0" styleClass="background">
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox fx:id="categoriesPane" alignment="CENTER" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding></HBox>
+                  <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" styleClass="background">
+                     <content>
+                        <TilePane fx:id="tilePane" hgap="50.0" prefHeight="200.0" prefWidth="200.0" styleClass="background" vgap="50.0">
+                           <padding>
+                              <Insets bottom="150.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </TilePane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </center>
+         <top>
+            <HBox fx:id="topPanel" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox maxHeight="75.0" minHeight="75.0" prefHeight="75.0" prefWidth="500.0" spacing="10.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                           <children>
+                              <CheckBox fx:id="createCategoriesCheck" mnemonicParsing="false" styleClass="checkbox" text="Generate Categories from Folders directly under the selected folder" />
+                              <Button mnemonicParsing="false" onAction="#selectSyncFolder" text="Choose Sync Folder" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <ChoiceBox fx:id="sortingList" prefWidth="150.0" />
+                  <TextField fx:id="filterField" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#createAddModal" text="Add Movie" />
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#createEditModal" text="Edit Movie" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
