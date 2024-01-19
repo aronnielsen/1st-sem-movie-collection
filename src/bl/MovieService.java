@@ -114,7 +114,6 @@ public class MovieService {
                     syncFolder(filesInFolder, false, false, -1);
                 }
             } else if (!file.isHidden() && getFileExtension(file.getName()).equals("mp4")) {
-                System.out.println(destinationFolder + "/" + file.getName(). replace(".mp4", ".jpg").replace(" ", "_"));
                 File imageCheck = new File(destinationFolder + "/" + file.getName(). replace(".mp4", ".jpg").replace(" ", "_"));
 
                 if (catID > -1) {

@@ -16,7 +16,7 @@ public class DBConnection {
                 destinationFolder.mkdirs();
             }
 
-            String url = "jdbc:sqlite:" + destinationFolder + "/sample.db";
+            String url = "jdbc:sqlite:" + destinationFolder + "/movie_collection.db";
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
