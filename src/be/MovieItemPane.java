@@ -10,46 +10,57 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
 public class MovieItemPane extends Region {
-    private static final double RATIO = 16.0 / 9.0;
-    private ImageView imageView;
-    private Label label;
+    private static final double RATIO = 2.5 / 4.0;
+    private final ImageView imageView;
+    private final Label label;
+    private final Label labelCat;
+    private final Label labelRating;
 
-    private VBox vertical;
+    private final VBox vertical;
 
     private Movie movie;
 
-    public MovieItemPane(boolean folder) {
+    public MovieItemPane() {
         super();
 
         vertical = new VBox();
         vertical.setSpacing(10.0);
         vertical.setPadding(new Insets(10.0, 10.0, 10.0, 10.0));
+        vertical.setAlignment(Pos.CENTER);
 
         HBox horizontal = new HBox();
+        horizontal.setMinSize(150, 150);
         horizontal.setAlignment(Pos.CENTER);
-
 
         imageView = new ImageView();
         imageView.setPreserveRatio(true);
-        horizontal.getChildren().add(imageView);
 
+        horizontal.getChildren().add(imageView);
         vertical.getChildren().add(horizontal);
 
-        label = new Label();
-        label.setStyle("-fx-text-fill: #dadada;");
-        label.setWrapText(true);
-        label.setMinWidth(150);
-        label.setMaxWidth(150);
+        label = labelHelper();
         vertical.getChildren().add(label);
 
-        // Set preferred width and height based on aspect ratio
-        setPrefWidth(150); // Arbitrary value
-        setPrefHeight(75);
-        //setPrefHeight(270 / RATIO);
+        labelRating = labelHelper();
+        vertical.getChildren().add(labelRating);
 
-        //getStyleClass().add("folder");
+        labelCat = labelHelper();
+        labelCat.setStyle("-fx-font-size: 10.0; -fx-text-fill: #dadada;");
+        vertical.getChildren().add(labelCat);
 
+        setPrefWidth(150);
+        setPrefHeight(200);
         getChildren().add(vertical);
+    }
+
+    private Label labelHelper() {
+        Label tempLbl = new Label();
+
+        tempLbl.setStyle("-fx-text-fill: #dadada;");
+        tempLbl.setWrapText(true);
+        tempLbl.setMinWidth(150);
+        tempLbl.setMaxWidth(150);
+        return tempLbl;
     }
 
     public Movie getMovie() {
@@ -63,28 +74,35 @@ public class MovieItemPane extends Region {
     public void setImage(Image image) {
         imageView.setImage(image);
         imageView.fitWidthProperty().bind(this.widthProperty());
-        imageView.fitHeightProperty().bind(this.heightProperty());
+        imageView.fitHeightProperty().bind(this.widthProperty());
+    }
+
+    public void setLabelRating(String text) {
+        labelRating.setText(text);
     }
 
     public void setLabel(String text) {
         label.setText(text);
+    }
+    public void setLabelCat(String text) {
+        labelCat.setText(text);
     }
 
     public boolean checkSelection() {
         return vertical.getStyleClass().contains("selected");
     }
 
-    public void toggleSelection() {
-        if (vertical.getStyleClass().contains("selected")) {
-            vertical.getStyleClass().remove("selected");
-        } else {
-            vertical.getStyleClass().add("selected");
-        }
+    public void select() {
+        vertical.getStyleClass().add("selected");
+    }
+    public void deselect() {
+        vertical.getStyleClass().remove("selected");
     }
 
     @Override
     protected void layoutChildren() {
         double width = getWidth();
+
         double height = width / RATIO;
         setPrefHeight(height);
 

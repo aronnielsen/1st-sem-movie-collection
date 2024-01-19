@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="300.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MovieModalController">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="400.0" spacing="10.0">
+         <children>
+            <Label fx:id="fromHeader" alignment="CENTER" prefWidth="370.0" styleClass="modal-header" text="Add new movie" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font></Label>
+            <Separator prefWidth="200.0" />
+            <VBox prefHeight="530.0" prefWidth="370.0" spacing="15.0">
+               <children>
+                  <VBox prefHeight="60.0" prefWidth="370.0" spacing="3.0">
+                     <children>
+                        <Label styleClass="form-label" text="MOVIE TITLE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="movieTitle" promptText="Enter movie title..." styleClass="form-input">
+                           <font>
+                              <Font size="16.0" />
+                           </font></TextField>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="10.0" layoutY="83.0" prefHeight="60.0" prefWidth="370.0" spacing="3.0">
+                     <children>
+                        <Label styleClass="form-label" text="MOVIE FILE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <TextField fx:id="moviePath" editable="false" prefHeight="35.0" prefWidth="265.0" promptText="Pick a mp4 file" styleClass="form-input">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextField>
+                              <Button fx:id="moviePathButton" mnemonicParsing="false" onAction="#openMoviePicker" prefWidth="100.0" styleClass="form-picker-button" text="Pick file...">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="370.0" spacing="3.0">
+                     <children>
+                        <Label styleClass="form-label" text="MOVIE IMAGE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <TextField fx:id="imagePath" editable="false" prefHeight="35.0" prefWidth="265.0" promptText="Pick an image file" styleClass="form-input">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextField>
+                              <Button fx:id="imagePathButton" mnemonicParsing="false" onAction="#openImagePicker" prefWidth="100.0" styleClass="form-picker-button" text="Pick file...">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="370.0" spacing="3.0">
+                     <children>
+                        <Label styleClass="form-label" text="MOVIE RATING">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <Slider fx:id="movieRating" blockIncrement="0.1" majorTickUnit="1.0" max="10.0" minorTickCount="9" prefHeight="38.0" prefWidth="335.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+                              <Label fx:id="ratingLabel" alignment="CENTER_RIGHT" prefWidth="30.0" styleClass="form-label" text="10.0" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="10.0" layoutY="10.0" prefHeight="310.0" prefWidth="370.0" spacing="3.0">
+                     <children>
+                        <Label styleClass="form-label" text="MOVIE CATEGORIES">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="categoryList" prefHeight="290.0" prefWidth="370.0" styleClass="form-list" />
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </VBox>
+            <Button fx:id="submitButton" mnemonicParsing="false" onAction="#submitForm" prefWidth="370.0" styleClass="form-submit" text="Add movie">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

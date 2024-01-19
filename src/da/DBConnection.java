@@ -1,5 +1,6 @@
 package da;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -8,12 +9,15 @@ public class DBConnection {
     public static Connection connect() {
         Connection conn = null;
         try {
-            // db parameters - use an existing path or it will create a new database
-            String url = "jdbc:sqlite:C:/Users/aronn/IdeaProjects/MovieCollection/src/sample.db";
-            // create a connection to the database
-            conn = DriverManager.getConnection(url);
+            String userHome = System.getProperty("user.home");
+            File destinationFolder = new File(userHome, "Pictures/MovieCollection_AN_Posters/Database");
 
-            System.out.println("Connection to SQLite has been established.");
+            if (!destinationFolder.exists()) {
+                destinationFolder.mkdirs();
+            }
+
+            String url = "jdbc:sqlite:" + destinationFolder + "/sample.db";
+            conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

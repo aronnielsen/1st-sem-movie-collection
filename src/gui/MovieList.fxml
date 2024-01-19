@@ -6,54 +6,104 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MovieListController">
    <children>
-      <BorderPane fx:id="borderPane" prefHeight="200.0" prefWidth="200.0" styleClass="background">
+      <BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="background">
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox fx:id="mainContent" styleClass="background" BorderPane.alignment="TOP_LEFT">
                <children>
-                  <HBox fx:id="categoriesPane" alignment="CENTER" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding></HBox>
-                  <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" styleClass="background">
+                  <ScrollPane fitToWidth="true" minHeight="60.0" styleClass="background" vbarPolicy="NEVER">
                      <content>
-                        <TilePane fx:id="tilePane" hgap="50.0" prefHeight="200.0" prefWidth="200.0" styleClass="background" vgap="50.0">
-                           <padding>
-                              <Insets bottom="150.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </TilePane>
+                        <HBox alignment="CENTER" fillHeight="false">
+                           <children>
+                              <HBox fx:id="categoriesPane" alignment="CENTER" fillHeight="false" minHeight="60.0" minWidth="500.0" spacing="10.0" styleClass="background">
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                                 <opaqueInsets>
+                                    <Insets bottom="10.0" />
+                                 </opaqueInsets>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" styleClass="background" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                     <content>
+                        <HBox fx:id="centeringContainer" alignment="CENTER" styleClass="background">
+                           <children>
+                              <TilePane fx:id="tilePane" hgap="50.0" styleClass="background" tileAlignment="TOP_LEFT" vgap="50.0" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin></TilePane>
+                           </children>
+                        </HBox>
                      </content>
                   </ScrollPane>
                </children>
             </VBox>
          </center>
          <top>
-            <HBox fx:id="topPanel" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox fx:id="topPanel" alignment="TOP_CENTER" prefWidth="1280.0" spacing="10.0" styleClass="menu-background" BorderPane.alignment="CENTER">
                <children>
-                  <VBox maxHeight="75.0" minHeight="75.0" prefHeight="75.0" prefWidth="500.0" spacing="10.0">
+                  <VBox spacing="10.0">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                        <Button mnemonicParsing="false" onAction="#selectSyncFolder" text="Choose Sync Folder" />
+                        <CheckBox fx:id="createCategoriesCheck" mnemonicParsing="false" styleClass="checkbox" text="Create categories from direct subfolders" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_RIGHT" spacing="5.0" HBox.hgrow="ALWAYS" />
+                  <VBox alignment="TOP_RIGHT" spacing="10.0">
+                     <children>
+                        <HBox alignment="TOP_RIGHT" spacing="10.0">
                            <children>
-                              <CheckBox fx:id="createCategoriesCheck" mnemonicParsing="false" styleClass="checkbox" text="Generate Categories from Folders directly under the selected folder" />
-                              <Button mnemonicParsing="false" onAction="#selectSyncFolder" text="Choose Sync Folder" />
+                              <HBox spacing="5.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#createAddModal" text="Add Movie" />
+                                    <Button fx:id="editMovieButton" disable="true" mnemonicParsing="false" onAction="#editMovie" text="Edit Movie" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="375.0" layoutY="10.0" spacing="5.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#createAddCategoryModal" text="Add Category" />
+                                    <Button fx:id="editCategoryButton" disable="true" mnemonicParsing="false" onAction="#editCategory" text="Edit Category" />
+                                 </children>
+                              </HBox>
                            </children>
-                        </VBox>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" spacing="10.0">
+                           <children>
+                              <HBox>
+                                 <children>
+                                    <Label style="-fx-text-fill: #dadada;" text="Rating: ">
+                                       <padding>
+                                          <Insets top="4.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="minRatingValue" prefWidth="40.0" promptText="0.0" text="0.0" />
+                                    <Label style="-fx-text-fill: #dadada;" text=" - ">
+                                       <padding>
+                                          <Insets top="3.0" />
+                                       </padding></Label>
+                                    <TextField fx:id="maxRatingValue" prefWidth="40.0" promptText="10.0" text="10.0" />
+                                 </children>
+                              </HBox>
+                              <HBox>
+                                 <children>
+                                    <TextField fx:id="filterField" promptText="Enter filter here..." />
+                                    <Button fx:id="filterButton" mnemonicParsing="false" text="Filter" />
+                                 </children>
+                              </HBox>
+                              <ChoiceBox fx:id="sortingList" prefWidth="150.0" />
+                           </children>
+                        </HBox>
                      </children>
                      <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets right="15.0" />
                      </padding>
                   </VBox>
-                  <ChoiceBox fx:id="sortingList" prefWidth="150.0" />
-                  <TextField fx:id="filterField" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#createAddModal" text="Add Movie" />
-                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#createEditModal" text="Edit Movie" />
-                     </children>
-                  </VBox>
                </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
             </HBox>
          </top>
       </BorderPane>

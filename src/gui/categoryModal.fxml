@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="300.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CategoryModalController">
+    <children>
+        <VBox prefHeight="200.0" prefWidth="400.0" spacing="10.0">
+            <children>
+                <Label fx:id="fromHeader" alignment="CENTER" prefWidth="370.0" styleClass="modal-header" text="Add new category" textAlignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="28.0" />
+                    </font></Label>
+                <Separator prefWidth="200.0" />
+                <VBox prefHeight="530.0" prefWidth="370.0" spacing="15.0">
+                    <children>
+                        <VBox prefHeight="60.0" prefWidth="370.0" spacing="3.0">
+                            <children>
+                                <Label styleClass="form-label" text="CATEGORY TITLE">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="categoryTitle" promptText="Enter category title..." styleClass="form-input">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font></TextField>
+                            </children>
+                        </VBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </VBox>
+                <Button fx:id="submitButton" mnemonicParsing="false" onAction="#submitForm" prefWidth="370.0" styleClass="form-submit" text="Add category">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Button>
+            </children>
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

@@ -1,38 +1,46 @@
 package be;
 
-import gui.MovieListController;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 
 public class CategoryItemPane extends Region {
-    private Label label;
-    private long categoryID = 0;
+    private final Label label;
+    private Category category;
 
-    public CategoryItemPane(MovieListController refController) {
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public CategoryItemPane() {
         super();
-        getStyleClass().add("category");
+
+        VBox vertical = new VBox();
+        vertical.setAlignment(Pos.CENTER);
+
         label = new Label();
         label.setStyle("-fx-text-fill: #dadada;");
         label.setAlignment(Pos.CENTER);
         label.setWrapText(true);
-        label.setMinWidth(150);
+        label.setMinWidth(100);
         label.setMaxWidth(150);
-        getChildren().add(label);
+        label.getStyleClass().add("category");
+        vertical.getChildren().add(label);
 
-        /*this.setOnMouseClicked(event -> {
-            refController.showCategory(this.categoryID);
-        });*/
+        getChildren().add(vertical);
     }
 
-    public void toggleSelection() {
-        if (getStyleClass().contains("selected")) {
-            getStyleClass().remove("selected");
-        } else {
-            getStyleClass().add("selected");
-        }
+    public void select() {
+        getStyleClass().add("selected");
     }
-
+    public void deselect() {
+        getStyleClass().remove("selected");
+    }
 
     public void setLabel(String text) {
         label.setText(text);
